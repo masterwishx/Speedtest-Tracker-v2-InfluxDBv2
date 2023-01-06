@@ -8,3 +8,5 @@ This dashboard shows data collected by Speedtest Tracker v2 https://github.com/a
 Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with guide for OLD Speedtest Tracker app. https://grafana.com/grafana/dashboards/16428-speedtest-tracker/
 
 Same steps here as before for exporting data but without needs for influxDBv1.
+
+![Screenshot 2023-01-05 233314](https://user-images.githubusercontent.com/28630321/210948506-e58f6784-d240-40f7-9cf7-c03857dc29b2.png)
