@@ -11,11 +11,12 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 
 ![Screenshot 2023-01-05 233314](https://user-images.githubusercontent.com/28630321/210948506-e58f6784-d240-40f7-9cf7-c03857dc29b2.png)
 
- 6.4.24 - Added Multi bucket support.
 
- you can change bucket name and add muliple buckets by : 
+``` 6.4.24 - Added Multi bucket support. ```
 
- Go to Dashboard Setting - Variables - Click on bucket - Custom options:
+ You can change bucket name and add multiple buckets by : 
+
+ <b>Go to Dashboard Setting - Variables - Click on bucket - Custom options:</b>
  
 ![Screenshot 2024-04-06 204806](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/808c1b36-71dc-4669-8014-6aac6ebfd85b)
 
