@@ -1,7 +1,7 @@
 # Speedtest-Tracker-v2-InfluxDBv2
 
 A dashboard to display data exported by Speedtest Tracker v2 . Avalible Now at Grafana Dashboard 17808
-(https://grafana.com/grafana/dashboards/17808-speedtest-tracker-v2/)
+(https://grafana.com/grafana/dashboards/17808-speedtest-tracker-v2-influxdbv2/)
 
 This dashboard shows data collected by Speedtest Tracker v2 https://github.com/alexjustesen/speedtest-tracker and exported in an InfluxDBv2 database in the bucket.
 
