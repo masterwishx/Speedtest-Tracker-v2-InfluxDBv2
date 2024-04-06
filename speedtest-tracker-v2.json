@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.2.2"
+      "version": "10.4.1"
     },
     {
       "type": "datasource",
@@ -124,20 +124,22 @@
         "defaults": {
           "decimals": 1,
           "mappings": [],
+          "max": 1000000000,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "dark-red",
                 "value": null
               },
               {
-                "color": "light-yellow",
-                "value": 420
+                "color": "dark-yellow",
+                "value": 60
               },
               {
-                "color": "green",
-                "value": 450
+                "color": "dark-green",
+                "value": 70
               }
             ]
           },
@@ -164,11 +166,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -193,7 +196,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -238,20 +241,22 @@
         "defaults": {
           "decimals": 1,
           "mappings": [],
+          "max": 100000000,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "red",
+                "color": "dark-red",
                 "value": null
               },
               {
-                "color": "light-yellow",
-                "value": 7
+                "color": "dark-yellow",
+                "value": 70
               },
               {
-                "color": "green",
-                "value": 9
+                "color": "dark-green",
+                "value": 90
               }
             ]
           },
@@ -279,11 +284,12 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -307,7 +313,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -352,20 +358,22 @@
         "defaults": {
           "decimals": 1,
           "mappings": [],
+          "max": 30,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-green",
                 "value": null
               },
               {
-                "color": "#EAB839",
-                "value": 20
+                "color": "dark-yellow",
+                "value": 50
               },
               {
-                "color": "red",
-                "value": 30
+                "color": "dark-red",
+                "value": 100
               }
             ]
           },
@@ -392,10 +400,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -419,7 +428,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -464,20 +473,22 @@
         "defaults": {
           "decimals": 1,
           "mappings": [],
+          "max": 10,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-green",
                 "value": null
               },
               {
-                "color": "#EAB839",
-                "value": 20
+                "color": "dark-yellow",
+                "value": 50
               },
               {
-                "color": "red",
-                "value": 30
+                "color": "dark-red",
+                "value": 100
               }
             ]
           },
@@ -504,10 +515,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -531,7 +543,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -580,15 +592,15 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "dark-green",
                 "value": null
               },
               {
-                "color": "#EAB839",
+                "color": "dark-yellow",
                 "value": 0.5
               },
               {
-                "color": "red",
+                "color": "dark-red",
                 "value": 1
               }
             ]
@@ -616,10 +628,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -643,7 +656,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"packet_loss\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"packet_loss\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -749,7 +762,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "dark-blue",
+                  "fixedColor": "#a352ff",
                   "mode": "fixed"
                 }
               },
@@ -762,7 +775,7 @@
               },
               {
                 "id": "custom.axisSoftMax",
-                "value": 15000000
+                "value": 150000000
               }
             ]
           },
@@ -775,7 +788,7 @@
               {
                 "id": "color",
                 "value": {
-                  "fixedColor": "dark-yellow",
+                  "fixedColor": "#1774ff",
                   "mode": "fixed"
                 }
               }
@@ -815,9 +828,8 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDBV2}"
           },
-          "hide": false,
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
-          "refId": "C"
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A"
         }
       ],
       "title": "Speedtest Results",
@@ -954,9 +966,8 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDBV2}"
           },
-          "hide": false,
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
-          "refId": "C"
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A"
         }
       ],
       "title": "Ping",
@@ -1119,7 +1130,7 @@
             "uid": "${DS_INFLUXDBV2}"
           },
           "hide": false,
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "C"
         }
       ],
@@ -1486,7 +1497,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -1498,7 +1509,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "table",
           "select": [
@@ -1863,7 +1874,7 @@
           }
         ]
       },
-      "pluginVersion": "10.2.2",
+      "pluginVersion": "10.4.1",
       "targets": [
         {
           "datasource": {
@@ -1871,7 +1882,7 @@
             "uid": "${DS_INFLUXDBV2}"
           },
           "hide": false,
-          "query": "from(bucket: \"speedtest-tracker-new\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
         }
       ],
@@ -1933,7 +1944,7 @@
   ],
   "refresh": "5m",
   "revision": 1,
-  "schemaVersion": 38,
+  "schemaVersion": 39,
   "tags": [
     "speedtest tracker",
     "speedtest",
@@ -1941,7 +1952,36 @@
     "Flux"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "speedtest-tracker-new"
+          ],
+          "value": [
+            "speedtest-tracker-new"
+          ]
+        },
+        "description": "InfluxDBv2 bucket",
+        "hide": 0,
+        "includeAll": false,
+        "label": "SpeedTest Tracker",
+        "multi": true,
+        "name": "bucket",
+        "options": [
+          {
+            "selected": true,
+            "text": "speedtest-tracker-new",
+            "value": "speedtest-tracker-new"
+          }
+        ],
+        "query": "speedtest-tracker-new",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
   },
   "time": {
     "from": "now-3h",
@@ -1964,7 +2004,7 @@
   },
   "timezone": "",
   "title": "Speedtest Tracker v2 - InfluxDBv2",
-  "uid": "g7QsvEtVV",
-  "version": 4,
+  "uid": "g7QsvEtVk",
+  "version": 35,
   "weekStart": ""
 }
