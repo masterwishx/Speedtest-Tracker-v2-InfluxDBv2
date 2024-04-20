@@ -13,6 +13,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 
 
 ``` 6.4.24 - Added Multi bucket support. ```
+``` 20.4.24 - Panels Fixed + Avg Speed Fixed ```
 
  You can change bucket name and add multiple buckets by : 
 
@@ -20,6 +21,5 @@ Same steps here as before for exporting data but without needs for influxDBv1.
  
 ![Screenshot 2024-04-06 204806](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/808c1b36-71dc-4669-8014-6aac6ebfd85b)
 
- 
 
  
