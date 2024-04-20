@@ -13,7 +13,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 
 
 ``` 6.4.24 - Added Multi bucket support. ```<br>
-``` 20.4.24 - Panels Fixed + Avg Speed Fixed ```
+``` 20.4.24 - Panels fixed + Avg Speed fixed. ```
 
  You can change bucket name and add multiple buckets by : 
 
