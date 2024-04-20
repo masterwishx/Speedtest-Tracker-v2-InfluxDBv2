@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.4.1"
+      "version": "10.4.2"
     },
     {
       "type": "datasource",
@@ -171,7 +171,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -196,7 +196,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -289,7 +289,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -313,7 +313,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -404,7 +404,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -428,7 +428,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -519,7 +519,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -543,7 +543,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -587,9 +587,12 @@
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
+          "fieldMinMax": true,
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
-            "mode": "absolute",
+            "mode": "percentage",
             "steps": [
               {
                 "color": "dark-green",
@@ -597,11 +600,11 @@
               },
               {
                 "color": "dark-yellow",
-                "value": 0.5
+                "value": 10
               },
               {
                 "color": "dark-red",
-                "value": 1
+                "value": 50
               }
             ]
           },
@@ -632,7 +635,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -656,7 +659,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"packet_loss\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"packet_loss\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -828,7 +831,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDBV2}"
           },
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"upload_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
         }
       ],
@@ -966,7 +969,7 @@
             "type": "influxdb",
             "uid": "${DS_INFLUXDBV2}"
           },
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
         }
       ],
@@ -1034,8 +1037,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1130,7 +1132,7 @@
             "uid": "${DS_INFLUXDBV2}"
           },
           "hide": false,
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "C"
         }
       ],
@@ -1176,8 +1178,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -1197,19 +1198,18 @@
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
-                      "value": 16
+                      "value": 50
                     },
                     {
                       "color": "red",
-                      "value": 30
+                      "value": 100
                     }
                   ]
                 }
@@ -1218,16 +1218,21 @@
                 "id": "custom.cellOptions",
                 "value": {
                   "mode": "gradient",
-                  "type": "gauge"
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
                 }
               },
               {
                 "id": "max",
-                "value": 20
+                "value": 30
               },
               {
                 "id": "min",
-                "value": 8
+                "value": 0
+              },
+              {
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
@@ -1241,40 +1246,44 @@
                 "id": "custom.cellOptions",
                 "value": {
                   "mode": "gradient",
-                  "type": "gauge"
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
                 }
               },
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     },
                     {
                       "color": "yellow",
-                      "value": 420
+                      "value": 60
                     },
                     {
                       "color": "green",
-                      "value": 450
+                      "value": 70
                     }
                   ]
                 }
               },
               {
                 "id": "min",
-                "value": 300
+                "value": 0
               },
               {
                 "id": "max",
-                "value": 500
+                "value": 1000000000
               },
               {
                 "id": "custom.width",
                 "value": 569
+              },
+              {
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
@@ -1288,33 +1297,33 @@
                 "id": "custom.cellOptions",
                 "value": {
                   "mode": "gradient",
-                  "type": "gauge"
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
                 }
               },
               {
                 "id": "min",
-                "value": 5
+                "value": 0
               },
               {
                 "id": "max",
-                "value": 10
+                "value": 100000000
               },
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     },
                     {
                       "color": "yellow",
-                      "value": 7
+                      "value": 70
                     },
                     {
                       "color": "green",
-                      "value": 9
+                      "value": 90
                     }
                   ]
                 }
@@ -1322,6 +1331,10 @@
               {
                 "id": "custom.width",
                 "value": 554
+              },
+              {
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
@@ -1386,19 +1399,18 @@
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
-                      "value": 5
+                      "value": 50
                     },
                     {
                       "color": "red",
-                      "value": 10
+                      "value": 100
                     }
                   ]
                 }
@@ -1407,7 +1419,8 @@
                 "id": "custom.cellOptions",
                 "value": {
                   "mode": "gradient",
-                  "type": "gauge"
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
                 }
               },
               {
@@ -1415,7 +1428,12 @@
                 "value": 10
               },
               {
-                "id": "min"
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "decimals",
+                "value": 1
               }
             ]
           },
@@ -1432,19 +1450,18 @@
               {
                 "id": "thresholds",
                 "value": {
-                  "mode": "absolute",
+                  "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
-                      "value": 0.5
+                      "value": 10
                     },
                     {
                       "color": "red",
-                      "value": 1
+                      "value": 50
                     }
                   ]
                 }
@@ -1453,7 +1470,8 @@
                 "id": "custom.cellOptions",
                 "value": {
                   "mode": "gradient",
-                  "type": "gauge"
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
                 }
               },
               {
@@ -1466,7 +1484,7 @@
               },
               {
                 "id": "max",
-                "value": 1
+                "value": 100
               }
             ]
           }
@@ -1493,11 +1511,11 @@
         "sortBy": [
           {
             "desc": true,
-            "displayName": "UL Avg."
+            "displayName": "DL Avg."
           }
         ]
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -1509,7 +1527,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "table",
           "select": [
@@ -1686,8 +1704,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1874,7 +1891,7 @@
           }
         ]
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "10.4.2",
       "targets": [
         {
           "datasource": {
@@ -1882,7 +1899,7 @@
             "uid": "${DS_INFLUXDBV2}"
           },
           "hide": false,
-          "query": "bucketName = \"${bucket}\"\r\nfrom(bucket: bucketName)\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
         }
       ],
@@ -1967,7 +1984,7 @@
         "hide": 0,
         "includeAll": false,
         "label": "SpeedTest Tracker",
-        "multi": true,
+        "multi": false,
         "name": "bucket",
         "options": [
           {
@@ -2005,6 +2022,6 @@
   "timezone": "",
   "title": "Speedtest Tracker v2 - InfluxDBv2",
   "uid": "g7QsvEtVk",
-  "version": 35,
+  "version": 43,
   "weekStart": ""
 }
