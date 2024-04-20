@@ -12,7 +12,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 ![Screenshot 2023-01-05 233314](https://user-images.githubusercontent.com/28630321/210948506-e58f6784-d240-40f7-9cf7-c03857dc29b2.png)
 
 
-``` 6.4.24 - Added Multi bucket support. ```
+``` 6.4.24 - Added Multi bucket support. ```<br>
 ``` 20.4.24 - Panels Fixed + Avg Speed Fixed ```
 
  You can change bucket name and add multiple buckets by : 
