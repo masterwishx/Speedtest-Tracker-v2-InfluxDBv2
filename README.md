@@ -9,7 +9,9 @@ Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with gui
 
 Same steps here as before for exporting data but without needs for influxDBv1.
 
-![Screenshot 2023-01-05 233314](https://user-images.githubusercontent.com/28630321/210948506-e58f6784-d240-40f7-9cf7-c03857dc29b2.png)
+
+![Screenshot 2024-05-05 211008](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/cee88a5d-6df3-4166-a52a-63862485a33d)
+
 
 
 ``` 6.4.24 - Added Multi bucket support. ```<br>
