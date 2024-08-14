@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "10.4.2"
+      "version": "11.1.3"
     },
     {
       "type": "datasource",
@@ -79,7 +79,7 @@
       "tags": [],
       "targetBlank": true,
       "title": "Speedtest Tracker v2 App",
-      "tooltip": "Speedtest Tracker",
+      "tooltip": "Speedtest Tracker - DaRKNaS",
       "type": "link",
       "url": "https://192.168.0.199:9443"
     },
@@ -94,6 +94,42 @@
       "tooltip": "Speedtest Tracker Repo",
       "type": "link",
       "url": "https://github.com/alexjustesen/speedtest-tracker"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "GitHub",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Grafana",
+      "tooltip": "",
+      "type": "link",
+      "url": "https://grafana.com/grafana/dashboards/17808-speedtest-tracker-v2-influxdbv2/"
+    },
+    {
+      "asDropdown": false,
+      "icon": "doc",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "ookla guide",
+      "tooltip": "ookla Performance metrics",
+      "type": "link",
+      "url": "https://www.ookla.com/resources/guides/speedtest-methodology#performance-metrics"
     }
   ],
   "liveNow": false,
@@ -112,7 +148,7 @@
       },
       "id": 115,
       "panels": [],
-      "title": "Speedtest Tracker v2",
+      "title": "Quick Speed Info",
       "type": "row"
     },
     {
@@ -120,11 +156,12 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Download speed - measures how quickly you can pull data from a server on the internet to your device.",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
+          "fieldMinMax": true,
           "mappings": [],
-          "max": 1000000000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -159,6 +196,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -166,12 +204,12 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
+        "showPercentChange": true,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "datasource": {
@@ -237,11 +275,12 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Upload speed - measures how quickly you send data from your device to the internet.",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
+          "fieldMinMax": true,
           "mappings": [],
-          "max": 100000000,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -277,6 +316,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -284,12 +324,12 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
+        "showPercentChange": true,
         "text": {},
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "datasource": {
@@ -354,11 +394,12 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Also called latency, ping is the reaction time of your connection - that is, how quickly your device gets a response after you've sent out a request.",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
+          "fieldMinMax": true,
           "mappings": [],
-          "max": 30,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -393,6 +434,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -400,11 +442,11 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
+        "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "datasource": {
@@ -469,11 +511,12 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Also called Packet Delay Variation (PDV), jitter is a measure of the variability in ping over time.\nThis metric shows the average difference between consecutive latency measurements.",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
+          "fieldMinMax": true,
           "mappings": [],
-          "max": 10,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -508,6 +551,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -515,11 +559,11 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
+        "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "datasource": {
@@ -584,12 +628,12 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Packet loss occurs when a packet of data being sent over the internet is not received or is incomplete. This is described in the percentage of packets lost compared to packets sent.",
       "fieldConfig": {
         "defaults": {
           "decimals": 1,
           "fieldMinMax": true,
           "mappings": [],
-          "max": 100,
           "min": 0,
           "thresholds": {
             "mode": "percentage",
@@ -600,11 +644,11 @@
               },
               {
                 "color": "dark-yellow",
-                "value": 10
+                "value": 2
               },
               {
                 "color": "dark-red",
-                "value": 50
+                "value": 5
               }
             ]
           },
@@ -624,6 +668,7 @@
         "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -631,11 +676,11 @@
           "fields": "",
           "values": false
         },
-        "showPercentChange": false,
+        "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.1.3",
       "targets": [
         {
           "datasource": {
@@ -696,11 +741,24 @@
       "type": "stat"
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 127,
+      "panels": [],
+      "title": "Basic Speed Info",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
-      "description": "",
+      "description": "Download speed - measures how quickly you can pull data from a server on the internet to your device.\n\nUpload speed - measures how quickly you send data from your device to the internet.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -803,7 +861,7 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 104,
       "interval": "",
@@ -820,6 +878,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "none"
         }
@@ -860,7 +919,7 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
-      "description": "",
+      "description": "Also called latency, ping is the reaction time of your connection - that is, how quickly your device gets a response after you've sent out a request.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -941,7 +1000,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 16
       },
       "id": 119,
       "interval": "",
@@ -958,6 +1017,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "none"
         }
@@ -993,7 +1053,7 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
-      "description": "",
+      "description": "Also called Packet Delay Variation (PDV), jitter is a measure of the variability in ping over time.\nThis metric shows the average difference between consecutive latency measurements.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1096,14 +1156,38 @@
                 }
               }
             ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Ping (ms)"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
           }
         ]
       },
       "gridPos": {
-        "h": 10,
+        "h": 9,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 24
       },
       "id": 122,
       "interval": "",
@@ -1120,6 +1204,7 @@
           "showLegend": true
         },
         "tooltip": {
+          "maxHeight": 600,
           "mode": "multi",
           "sort": "none"
         }
@@ -1136,7 +1221,7 @@
           "refId": "C"
         }
       ],
-      "title": "Jitter (ms)",
+      "title": "Jitter",
       "transformations": [
         {
           "id": "merge",
@@ -1162,6 +1247,370 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
+      "description": "Low - Minimum Latency (formerly, Latency) measures the best case latency for the user at the time they decide to take a Speedtest.\n\nAvg - Primary-Server Latency is the interquartile mean (IQM or midmean) of the idle latency tests taken prior to the download portion of a Speedtest.\n\nHigh - Multi-server latency measures latency to multiple connections and then takes an average.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 30,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 33
+      },
+      "id": 125,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDBV2}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_latency_avg\" or r[\"_field\"] == \"upload_latency_high\" or r[\"_field\"] == \"upload_latency_low\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "C"
+        }
+      ],
+      "title": "Upload Latency",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "download_jitter": "Download (ms)",
+              "ping_jitter": "Ping (ms)",
+              "upload_jitter": "Upload (ms)",
+              "upload_latency_avg": "Average (ms)",
+              "upload_latency_high": "High (ms)",
+              "upload_latency_low": "Low (ms)"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDBV2}"
+      },
+      "description": "Low - Minimum Latency (formerly, Latency) measures the best case latency for the user at the time they decide to take a Speedtest.\n\nAvg - Primary-Server Latency is the interquartile mean (IQM or midmean) of the idle latency tests taken prior to the download portion of a Speedtest.\n\nHigh - Multi-server latency measures latency to multiple connections and then takes an average.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 30,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 126,
+      "interval": "",
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDBV2}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_latency_avg\" or r[\"_field\"] == \"download_latency_high\" or r[\"_field\"] == \"download_latency_low\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "C"
+        }
+      ],
+      "title": "Download Latency",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "download_jitter": "Download (ms)",
+              "download_latency_avg": "Average (ms)",
+              "download_latency_high": "High (ms)",
+              "download_latency_low": "Low (ms)",
+              "ping_jitter": "Ping (ms)",
+              "upload_jitter": "Upload (ms)",
+              "upload_latency_avg": "Average (ms)",
+              "upload_latency_high": "High (ms)",
+              "upload_latency_low": "Low (ms)"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": 128,
+      "panels": [],
+      "title": "Advanced Speed Info",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDBV2}"
+      },
       "description": "Shows the avg speeds received by server",
       "fieldConfig": {
         "defaults": {
@@ -1173,6 +1622,7 @@
             },
             "inspect": false
           },
+          "fieldMinMax": false,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -1223,8 +1673,7 @@
                 }
               },
               {
-                "id": "max",
-                "value": 30
+                "id": "max"
               },
               {
                 "id": "min",
@@ -1233,6 +1682,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "fieldMinMax",
+                "value": true
               }
             ]
           },
@@ -1424,8 +1877,7 @@
                 }
               },
               {
-                "id": "max",
-                "value": 10
+                "id": "max"
               },
               {
                 "id": "min",
@@ -1434,6 +1886,10 @@
               {
                 "id": "decimals",
                 "value": 1
+              },
+              {
+                "id": "fieldMinMax",
+                "value": true
               }
             ]
           },
@@ -1457,11 +1913,11 @@
                     },
                     {
                       "color": "#EAB839",
-                      "value": 10
+                      "value": 2
                     },
                     {
                       "color": "red",
-                      "value": 50
+                      "value": 5
                     }
                   ]
                 }
@@ -1483,8 +1939,101 @@
                 "value": 0
               },
               {
-                "id": "max",
-                "value": 100
+                "id": "max"
+              },
+              {
+                "id": "fieldMinMax",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "UL Ping Avg."
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
+                }
+              },
+              {
+                "id": "max"
+              },
+              {
+                "id": "fieldMinMax",
+                "value": true
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "percentage",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 50
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DL Ping Avg."
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
+                }
+              },
+              {
+                "id": "max"
+              },
+              {
+                "id": "fieldMinMax",
+                "value": true
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "percentage",
+                  "steps": [
+                    {
+                      "color": "green"
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 50
+                    },
+                    {
+                      "color": "red",
+                      "value": 80
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -1494,7 +2043,7 @@
         "h": 6,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 52
       },
       "id": 114,
       "options": {
@@ -1515,7 +2064,7 @@
           }
         ]
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1527,7 +2076,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"upload_latency_avg\" or r[\"_field\"] == \"download_latency_avg\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "table",
           "select": [
@@ -1565,6 +2114,12 @@
                 "operation": "aggregate"
               },
               "download_bits": {
+                "aggregations": [
+                  "mean"
+                ],
+                "operation": "aggregate"
+              },
+              "download_latency_avg": {
                 "aggregations": [
                   "mean"
                 ],
@@ -1612,6 +2167,12 @@
                   "mean"
                 ],
                 "operation": "aggregate"
+              },
+              "upload_latency_avg": {
+                "aggregations": [
+                  "mean"
+                ],
+                "operation": "aggregate"
               }
             }
           }
@@ -1620,25 +2181,30 @@
           "id": "organize",
           "options": {
             "excludeByName": {},
+            "includeByName": {},
             "indexByName": {
               "download_bits (mean)": 2,
-              "packet_loss (mean)": 6,
+              "download_latency_avg (mean)": 7,
+              "packet_loss (mean)": 8,
               "ping (mean)": 4,
               "ping_jitter (mean)": 5,
               "server_id": 0,
               "server_name": 1,
-              "upload_bits (mean)": 3
+              "upload_bits (mean)": 3,
+              "upload_latency_avg (mean)": 6
             },
             "renameByName": {
               "download (mean)": "DL Avg.",
               "download_bits (mean)": "DL Avg.",
+              "download_latency_avg (mean)": "DL Ping Avg.",
               "packet_loss (mean)": "Packet Loss",
               "ping (mean)": "Ping Avg.",
               "ping_jitter (mean)": "Ping Jitter",
               "server_id": "Server ID",
               "server_name": "Server Name",
               "upload (mean)": "UL Avg.",
-              "upload_bits (mean)": "UL Avg."
+              "upload_bits (mean)": "UL Avg.",
+              "upload_latency_avg (mean)": "UL Ping Avg."
             }
           }
         },
@@ -1650,10 +2216,12 @@
                 "Server ID",
                 "Server Name",
                 "DL Avg.",
+                "UL Avg.",
                 "Ping Avg.",
                 "Ping Jitter",
-                "UL Avg.",
-                "Packet Loss"
+                "UL Ping Avg.",
+                "Packet Loss",
+                "DL Ping Avg."
               ]
             }
           }
@@ -1818,7 +2386,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Ping (ms)"
+              "options": "Ping"
             },
             "properties": [
               {
@@ -1862,6 +2430,30 @@
                 "value": "ms"
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "UL Latency IQM"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "DL Latency IQM"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              }
+            ]
           }
         ]
       },
@@ -1869,7 +2461,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 58
       },
       "id": 121,
       "options": {
@@ -1891,7 +2483,7 @@
           }
         ]
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "11.0.0",
       "targets": [
         {
           "datasource": {
@@ -1899,7 +2491,7 @@
             "uid": "${DS_INFLUXDBV2}"
           },
           "hide": false,
-          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download\" or r[\"_field\"] == \"download_bits\" or r[\"_field\"] == \"download_jitter\" or r[\"_field\"] == \"id\" or r[\"_field\"] == \"packet_loss\" or r[\"_field\"] == \"ping\" or r[\"_field\"] == \"ping_jitter\" or r[\"_field\"] == \"scheduled\" or r[\"_field\"] == \"server_host\" or r[\"_field\"] == \"server_id\" or r[\"_field\"] == \"server_name\" or r[\"_field\"] == \"upload\" or r[\"_field\"] == \"upload_bits\" or r[\"_field\"] == \"upload_jitter\" or r[\"_field\"] == \"upload_latency_avg\" or r[\"_field\"] == \"download_latency_avg\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
         }
       ],
@@ -1918,32 +2510,36 @@
               "server_id": false,
               "upload": true
             },
+            "includeByName": {},
             "indexByName": {
               "Time": 1,
               "download": 2,
               "download_bits": 7,
               "download_jitter": 8,
+              "download_latency_avg": 14,
               "id": 0,
-              "packet_loss": 13,
+              "packet_loss": 15,
               "ping": 11,
               "ping_jitter": 12,
               "scheduled": 4,
-              "server_host": 14,
+              "server_host": 16,
               "server_id": 6,
               "server_name": 5,
               "upload": 3,
               "upload_bits": 9,
-              "upload_jitter": 10
+              "upload_jitter": 10,
+              "upload_latency_avg": 13
             },
             "renameByName": {
               "Time": "Time",
               "download": "",
               "download_bits": "Download (Mbit/s)",
               "download_jitter": "Download Jitter",
+              "download_latency_avg": "DL Latency IQM",
               "id": "ID",
               "id {host=\"speedtest\", name=\"speedtest\"}": "",
               "packet_loss": "Packet Loss",
-              "ping": "Ping (ms)",
+              "ping": "Ping",
               "ping_jitter": "Ping Jitter",
               "scheduled": "",
               "server_host": "Server Host",
@@ -1951,7 +2547,8 @@
               "server_name": "Server Name",
               "upload": "",
               "upload_bits": "Upload (Mbit/s)",
-              "upload_jitter": "Upload Jitter"
+              "upload_jitter": "Upload Jitter",
+              "upload_latency_avg": "UL Latency IQM"
             }
           }
         }
@@ -1991,9 +2588,14 @@
             "selected": true,
             "text": "speedtest-tracker-new",
             "value": "speedtest-tracker-new"
+          },
+          {
+            "selected": false,
+            "text": "speedtest-tracker-cloud",
+            "value": "speedtest-tracker-cloud"
           }
         ],
-        "query": "speedtest-tracker-new",
+        "query": "speedtest-tracker-new,speedtest-tracker-cloud",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2021,7 +2623,7 @@
   },
   "timezone": "",
   "title": "Speedtest Tracker v2 - InfluxDBv2",
-  "uid": "g7QsvEtVk",
-  "version": 43,
+  "uid": "g7QsvEtVV",
+  "version": 64,
   "weekStart": ""
 }
