@@ -9,10 +9,8 @@ Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with gui
 
 Same steps here as before for exporting data but without needs for influxDBv1.
 
-![Screenshot 2024-05-05 212200](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/2c761646-1550-4a50-9096-0a8c2b79fa1d)
-![Screenshot 2024-08-14 202721](https://github.com/user-attachments/assets/71e55ce7-ccf2-4cdf-b267-a0a3628ec7cc)
-![Screenshot 2024-08-14 202935](https://github.com/user-attachments/assets/37685a7d-9d58-4987-a4dd-2ebeabaebc49)
 ![Screenshot 2024-08-14 202917](https://github.com/user-attachments/assets/aab1ed25-2e70-4486-b540-4da6306418b6)
+![Screenshot 2024-08-14 202935](https://github.com/user-attachments/assets/37685a7d-9d58-4987-a4dd-2ebeabaebc49)
 
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
 ``` 20.4.24 - Panels fixed + Avg Speed fixed. ```<br>
