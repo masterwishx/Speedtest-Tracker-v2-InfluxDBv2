@@ -27,7 +27,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 
 8. Enjoy
 
-![speedtestsetup](https://user-images.githubusercontent.com/28630321/187088938-2b7c4492-89d8-433b-b66c-34de06cbb266.jpg)
+![image](https://github.com/user-attachments/assets/8e7f2195-a955-4246-a5fb-96b819d174d7)
 
 ![influxsetup](https://user-images.githubusercontent.com/28630321/187088939-492e8910-395b-4aef-b1f8-199ea98a2dc8.jpg)
 
