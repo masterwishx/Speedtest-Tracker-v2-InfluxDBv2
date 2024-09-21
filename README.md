@@ -9,6 +9,7 @@ Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with gui
 
 Same steps here as before for exporting data but without needs for influxDBv1.
 
+## Steps
 ```
 1. create bucket in InfluxDBv2
 
@@ -32,7 +33,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 ![image](https://github.com/user-attachments/assets/25aeb76a-5acf-4135-8073-a61f6bcb8cc3)
 ![influxsetup](https://user-images.githubusercontent.com/28630321/187088939-492e8910-395b-4aef-b1f8-199ea98a2dc8.jpg)
 
-
+## Info
 ![Screenshot 2024-08-14 202917](https://github.com/user-attachments/assets/aab1ed25-2e70-4486-b540-4da6306418b6)
 ![Screenshot 2024-08-14 202935](https://github.com/user-attachments/assets/37685a7d-9d58-4987-a4dd-2ebeabaebc49)
 
