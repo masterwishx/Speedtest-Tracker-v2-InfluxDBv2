@@ -9,6 +9,7 @@ Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with gui
 
 Same steps here as before for exporting data but without needs for influxDBv1.
 
+```
 1. create bucket in InfluxDBv2
 
 2.1 create or use exist API token (ALL ACCESS) for Grafana and auth.
@@ -26,6 +27,7 @@ Same steps here as before for exporting data but without needs for influxDBv1.
 7. import this script in Grafana Dashboard .
 
 8. Enjoy
+```
 
 ![image](https://github.com/user-attachments/assets/25aeb76a-5acf-4135-8073-a61f6bcb8cc3)
 ![influxsetup](https://user-images.githubusercontent.com/28630321/187088939-492e8910-395b-4aef-b1f8-199ea98a2dc8.jpg)
