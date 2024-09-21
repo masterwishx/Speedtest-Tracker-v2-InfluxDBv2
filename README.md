@@ -9,6 +9,24 @@ Dashboard based on my previous dashboard Speedtest Tracker - InfluxDBv2 with gui
 
 Same steps here as before for exporting data but without needs for influxDBv1.
 
+1. create bucket in InfluxDBv2
+
+2.1 create or use exist API token (ALL ACCESS) for Grafana and auth.
+
+2.2 create API token (read/write) for this bucket to use with speedtest-tracker or use exist.
+
+6. Config Client of InfluxDBv2(Speedtest-tracker) by entered data : bucket, etc ...
+
+7. Check in InfluxDBv2 in Data Explorer that data is exist in bucket
+
+8. Then you can select all data needed and switch to Script Editor copy the script (already done)
+
+9. Configure Grafana to use with data from InfluxDBv2 ( select datasource = InfluxDB , Query Language = Flux  ,Organization = yourorg , Bucket = speedtest , Token = yourtoken for bucket )
+
+10. import this script in Grafana Dashboard .
+
+11. Enjoy
+
 ![Screenshot 2024-08-14 202917](https://github.com/user-attachments/assets/aab1ed25-2e70-4486-b540-4da6306418b6)
 ![Screenshot 2024-08-14 202935](https://github.com/user-attachments/assets/37685a7d-9d58-4987-a4dd-2ebeabaebc49)
 
