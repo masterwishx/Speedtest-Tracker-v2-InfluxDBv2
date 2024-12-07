@@ -16,11 +16,7 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Updates
 
-- **7.12.24 - Compatible with Speedtest Tracker v0.25**
-  - Compatibility Update
-  - Some fields have been moved to tags.
-  - Addressed several issues identified in the previous versions.
-
+``` 7.12.24 - Compatibility Update for Speedtest Tracker v0.25 some fields have been moved to tags + some fixes. ```<br>
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
 ``` 20.4.24 - Panels fixed + Avg Speed fixed. ```<br>
 ``` 6.4.24 - Added Multi bucket support. ```<br>
