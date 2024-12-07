@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "11.1.3"
+      "version": "11.4.0"
     },
     {
       "type": "datasource",
@@ -67,7 +67,6 @@
   "description": "A dashboard to display data exported by Speedtest Tracker",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": 16339,
   "graphTooltip": 0,
   "id": null,
   "links": [
@@ -126,20 +125,15 @@
       "keepTime": false,
       "tags": [],
       "targetBlank": true,
-      "title": "ookla guide",
+      "title": "Ookla guide",
       "tooltip": "ookla Performance metrics",
       "type": "link",
       "url": "https://www.ookla.com/resources/guides/speedtest-methodology#performance-metrics"
     }
   ],
-  "liveNow": false,
   "panels": [
     {
       "collapsed": false,
-      "datasource": {
-        "type": "influxdb",
-        "uid": "aIJpPB_nk"
-      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -201,7 +195,7 @@
           "calcs": [
             "last"
           ],
-          "fields": "",
+          "fields": "/^Download Speed$/",
           "values": false
         },
         "showPercentChange": true,
@@ -209,7 +203,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.3",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -257,6 +251,10 @@
       "timeFrom": "1d",
       "title": "Download Speed",
       "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
         {
           "id": "organize",
           "options": {
@@ -310,7 +308,6 @@
         "y": 1
       },
       "id": 117,
-      "interval": "",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -321,7 +318,7 @@
           "calcs": [
             "last"
           ],
-          "fields": "",
+          "fields": "/^Upload Speed$/",
           "values": false
         },
         "showPercentChange": true,
@@ -329,7 +326,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.3",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -376,6 +373,10 @@
       "timeFrom": "1d",
       "title": "Upload Speed",
       "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
         {
           "id": "organize",
           "options": {
@@ -439,14 +440,14 @@
           "calcs": [
             "last"
           ],
-          "fields": "",
+          "fields": "/^Ping$/",
           "values": false
         },
         "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.3",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -493,6 +494,10 @@
       "timeFrom": "1d",
       "title": "Response Time",
       "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
         {
           "id": "organize",
           "options": {
@@ -556,14 +561,14 @@
           "calcs": [
             "last"
           ],
-          "fields": "",
+          "fields": "/^Ping Jitter$/",
           "values": false
         },
         "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.3",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -610,6 +615,10 @@
       "timeFrom": "1d",
       "title": "Ping Jitter",
       "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
         {
           "id": "organize",
           "options": {
@@ -673,14 +682,14 @@
           "calcs": [
             "last"
           ],
-          "fields": "",
+          "fields": "/^Packet Loss %$/",
           "values": false
         },
         "showPercentChange": true,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.1.3",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -728,6 +737,10 @@
       "title": "Packet Loss",
       "transformations": [
         {
+          "id": "merge",
+          "options": {}
+        },
+        {
           "id": "organize",
           "options": {
             "excludeByName": {},
@@ -741,12 +754,129 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDBV2}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dateTimeFromNow"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 10,
+        "y": 5
+      },
+      "id": 129,
+      "interval": "10m",
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "/^Time$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDBV2}"
+          },
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "speedtest",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "download"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Latest result",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "download_bits": true,
+              "id": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "download_bits": "Download Speed"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 127,
       "panels": [],
@@ -771,6 +901,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 30,
             "gradientMode": "opacity",
@@ -861,10 +992,9 @@
         "h": 10,
         "w": 24,
         "x": 0,
-        "y": 6
+        "y": 8
       },
       "id": 104,
-      "interval": "",
       "options": {
         "legend": {
           "calcs": [
@@ -883,7 +1013,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -932,6 +1062,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 30,
             "gradientMode": "opacity",
@@ -1000,10 +1131,9 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "id": 119,
-      "interval": "",
       "options": {
         "legend": {
           "calcs": [
@@ -1022,7 +1152,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -1035,6 +1165,10 @@
       ],
       "title": "Ping",
       "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
         {
           "id": "organize",
           "options": {
@@ -1066,6 +1200,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 30,
             "gradientMode": "opacity",
@@ -1097,7 +1232,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -1187,10 +1323,9 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 26
       },
       "id": 122,
-      "interval": "",
       "options": {
         "legend": {
           "calcs": [
@@ -1209,7 +1344,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -1260,6 +1395,7 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 30,
             "gradientMode": "opacity",
@@ -1291,7 +1427,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -1357,184 +1494,9 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 33
-      },
-      "id": 125,
-      "interval": "",
-      "options": {
-        "legend": {
-          "calcs": [
-            "last",
-            "min",
-            "max",
-            "mean"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "maxHeight": 600,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "8.5.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDBV2}"
-          },
-          "hide": false,
-          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_latency_avg\" or r[\"_field\"] == \"upload_latency_high\" or r[\"_field\"] == \"upload_latency_low\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
-          "refId": "C"
-        }
-      ],
-      "title": "Upload Latency",
-      "transformations": [
-        {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {},
-            "includeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "download_jitter": "Download (ms)",
-              "ping_jitter": "Ping (ms)",
-              "upload_jitter": "Upload (ms)",
-              "upload_latency_avg": "Average (ms)",
-              "upload_latency_high": "High (ms)",
-              "upload_latency_low": "Low (ms)"
-            }
-          }
-        }
-      ],
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDBV2}"
-      },
-      "description": "Low - Minimum Latency (formerly, Latency) measures the best case latency for the user at the time they decide to take a Speedtest.\n\nAvg - Primary-Server Latency is the interquartile mean (IQM or midmean) of the idle latency tests taken prior to the download portion of a Speedtest.\n\nHigh - Multi-server latency measures latency to multiple connections and then takes an average.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "series",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 30,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 3,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "decimals": 1,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              },
-              {
-                "color": "#EAB839",
-                "value": 20
-              },
-              {
-                "color": "red",
-                "value": 30
-              }
-            ]
-          },
-          "unit": "ms"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "High (ms)"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-blue",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Average (ms)"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-green",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Low (ms)"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "dark-purple",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 42
+        "y": 35
       },
       "id": 126,
-      "interval": "",
       "options": {
         "legend": {
           "calcs": [
@@ -1553,7 +1515,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "8.5.2",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -1594,12 +1556,187 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "${DS_INFLUXDBV2}"
+      },
+      "description": "Low - Minimum Latency (formerly, Latency) measures the best case latency for the user at the time they decide to take a Speedtest.\n\nAvg - Primary-Server Latency is the interquartile mean (IQM or midmean) of the idle latency tests taken prior to the download portion of a Speedtest.\n\nHigh - Multi-server latency measures latency to multiple connections and then takes an average.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "series",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 30,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 1,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Average (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low (ms)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 125,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDBV2}"
+          },
+          "hide": false,
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"upload_latency_avg\" or r[\"_field\"] == \"upload_latency_high\" or r[\"_field\"] == \"upload_latency_low\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "refId": "C"
+        }
+      ],
+      "title": "Upload Latency",
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "download_jitter": "Download (ms)",
+              "ping_jitter": "Ping (ms)",
+              "upload_jitter": "Upload (ms)",
+              "upload_latency_avg": "Average (ms)",
+              "upload_latency_high": "High (ms)",
+              "upload_latency_low": "Low (ms)"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 53
       },
       "id": 128,
       "panels": [],
@@ -1611,7 +1748,7 @@
         "type": "influxdb",
         "uid": "${DS_INFLUXDBV2}"
       },
-      "description": "Shows the avg speeds received by server",
+      "description": "Average speeds received by server",
       "fieldConfig": {
         "defaults": {
           "custom": {
@@ -1620,6 +1757,7 @@
               "mode": "gradient",
               "type": "color-background"
             },
+            "filterable": false,
             "inspect": false
           },
           "fieldMinMax": false,
@@ -1628,7 +1766,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "dark-blue",
+                "value": null
               }
             ]
           },
@@ -1651,7 +1790,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -1709,7 +1849,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     },
                     {
                       "color": "yellow",
@@ -1732,7 +1873,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 569
+                "value": 300
               },
               {
                 "id": "decimals",
@@ -1768,7 +1909,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red"
+                      "color": "red",
+                      "value": null
                     },
                     {
                       "color": "yellow",
@@ -1783,7 +1925,7 @@
               },
               {
                 "id": "custom.width",
-                "value": 554
+                "value": 300
               },
               {
                 "id": "decimals",
@@ -1823,7 +1965,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 125
+                "value": 90
               }
             ]
           },
@@ -1835,7 +1977,7 @@
             "properties": [
               {
                 "id": "custom.width",
-                "value": 156
+                "value": 200
               }
             ]
           },
@@ -1855,7 +1997,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -1909,7 +2052,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -1977,7 +2121,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -2022,7 +2167,8 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green"
+                      "color": "green",
+                      "value": null
                     },
                     {
                       "color": "#EAB839",
@@ -2040,10 +2186,10 @@
         ]
       },
       "gridPos": {
-        "h": 6,
+        "h": 7,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 54
       },
       "id": 114,
       "options": {
@@ -2064,7 +2210,7 @@
           }
         ]
       },
-      "pluginVersion": "11.0.0",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -2094,6 +2240,10 @@
       ],
       "title": "Avg. Speed by Server",
       "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {}
+        },
         {
           "id": "merge",
           "options": {}
@@ -2209,6 +2359,7 @@
           }
         },
         {
+          "disabled": true,
           "id": "filterFieldsByName",
           "options": {
             "include": {
@@ -2227,6 +2378,7 @@
           }
         },
         {
+          "disabled": true,
           "id": "filterByValue",
           "options": {
             "filters": [
@@ -2264,7 +2416,7 @@
               "type": "auto"
             },
             "inspect": false,
-            "minWidth": 150
+            "minWidth": 120
           },
           "decimals": 1,
           "mappings": [],
@@ -2272,7 +2424,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2312,12 +2465,12 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Server Host"
+              "options": "Server Name"
             },
             "properties": [
               {
                 "id": "custom.width",
-                "value": 250
+                "value": 200
               }
             ]
           },
@@ -2368,7 +2521,7 @@
               },
               {
                 "id": "custom.minWidth",
-                "value": 120
+                "value": 90
               }
             ]
           },
@@ -2380,6 +2533,10 @@
             "properties": [
               {
                 "id": "decimals"
+              },
+              {
+                "id": "custom.width",
+                "value": 90
               }
             ]
           },
@@ -2454,6 +2611,66 @@
                 "value": "ms"
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ISP"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Service"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 90
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "ookla": {
+                        "index": 0,
+                        "text": "Ookla"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Status"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "completed": {
+                        "index": 0,
+                        "text": "Completed"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -2461,7 +2678,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 58
+        "y": 61
       },
       "id": 121,
       "options": {
@@ -2474,7 +2691,7 @@
           ],
           "show": false
         },
-        "frameIndex": 7,
+        "frameIndex": 1,
         "showHeader": true,
         "sortBy": [
           {
@@ -2483,7 +2700,7 @@
           }
         ]
       },
-      "pluginVersion": "11.0.0",
+      "pluginVersion": "11.4.0",
       "targets": [
         {
           "datasource": {
@@ -2498,6 +2715,16 @@
       "title": "All Tests",
       "transformations": [
         {
+          "filter": {
+            "id": "byRefId",
+            "options": ""
+          },
+          "id": "labelsToFields",
+          "options": {
+            "mode": "columns"
+          }
+        },
+        {
           "id": "merge",
           "options": {}
         },
@@ -2505,7 +2732,10 @@
           "id": "organize",
           "options": {
             "excludeByName": {
+              "app_name": true,
               "download": true,
+              "healthy": true,
+              "result_id": true,
               "scheduled": true,
               "server_id": false,
               "upload": true
@@ -2513,18 +2743,26 @@
             "includeByName": {},
             "indexByName": {
               "Time": 1,
+              "app_name": 16,
               "download": 2,
               "download_bits": 7,
               "download_jitter": 8,
               "download_latency_avg": 14,
+              "external_ip": 19,
+              "healthy": 17,
               "id": 0,
+              "isp": 18,
               "packet_loss": 15,
               "ping": 11,
               "ping_jitter": 12,
+              "result_id": 20,
               "scheduled": 4,
-              "server_host": 16,
+              "server_country": 21,
               "server_id": 6,
+              "server_location": 22,
               "server_name": 5,
+              "service": 23,
+              "status": 24,
               "upload": 3,
               "upload_bits": 9,
               "upload_jitter": 10,
@@ -2536,15 +2774,22 @@
               "download_bits": "Download (Mbit/s)",
               "download_jitter": "Download Jitter",
               "download_latency_avg": "DL Latency IQM",
+              "external_ip": "IP",
               "id": "ID",
               "id {host=\"speedtest\", name=\"speedtest\"}": "",
+              "isp": "ISP",
               "packet_loss": "Packet Loss",
               "ping": "Ping",
               "ping_jitter": "Ping Jitter",
+              "result_id": "",
               "scheduled": "",
+              "server_country": "Server Country",
               "server_host": "Server Host",
               "server_id": "Server ID",
+              "server_location": "Server Location",
               "server_name": "Server Name",
+              "service": "Service",
+              "status": "Status",
               "upload": "",
               "upload_bits": "Upload (Mbit/s)",
               "upload_jitter": "Upload Jitter",
@@ -2557,8 +2802,7 @@
     }
   ],
   "refresh": "5m",
-  "revision": 1,
-  "schemaVersion": 39,
+  "schemaVersion": 40,
   "tags": [
     "speedtest tracker",
     "speedtest",
@@ -2569,19 +2813,12 @@
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": [
-            "speedtest-tracker-new"
-          ],
-          "value": [
-            "speedtest-tracker-new"
-          ]
+          "text": "speedtest-tracker-new",
+          "value": "speedtest-tracker-new"
         },
         "description": "InfluxDBv2 bucket",
-        "hide": 0,
         "includeAll": false,
         "label": "SpeedTest Tracker",
-        "multi": false,
         "name": "bucket",
         "options": [
           {
@@ -2596,8 +2833,6 @@
           }
         ],
         "query": "speedtest-tracker-new,speedtest-tracker-cloud",
-        "queryValue": "",
-        "skipUrlSync": false,
         "type": "custom"
       }
     ]
@@ -2624,6 +2859,6 @@
   "timezone": "",
   "title": "Speedtest Tracker v2 - InfluxDBv2",
   "uid": "g7QsvEtVk",
-  "version": 64,
+  "version": 81,
   "weekStart": ""
 }
