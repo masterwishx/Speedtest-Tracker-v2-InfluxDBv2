@@ -14,17 +14,18 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 ![Screenshot 2024-08-14 202917](https://github.com/user-attachments/assets/aab1ed25-2e70-4486-b540-4da6306418b6)
 ![Screenshot 2024-08-14 202935](https://github.com/user-attachments/assets/37685a7d-9d58-4987-a4dd-2ebeabaebc49)
 
-## 7.12.24 - Compatibility Update
+## Updates
 
-- **Compatible with Speedtest Tracker v0.25**
+- **7.12.24 Compatible with Speedtest Tracker v0.25**
+  - Compatibility Update
   - Some fields have been moved to tags.
-  
-- **Fixes:**
   - Addressed several issues identified in the previous versions.
 
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
 ``` 20.4.24 - Panels fixed + Avg Speed fixed. ```<br>
 ``` 6.4.24 - Added Multi bucket support. ```<br>
+
+## Multi buckets
 
  You can change bucket name and add multiple buckets by : 
 
