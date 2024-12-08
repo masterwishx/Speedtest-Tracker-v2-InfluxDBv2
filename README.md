@@ -16,6 +16,7 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Updates
 
+``` 8.12.24 - Fixed time in Latest result panel. ```<br>
 ``` 7.12.24 - Compatibility Update for Speedtest Tracker v0.25 some fields have been moved to tags + some fixes. ```<br>
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
 ``` 20.4.24 - Panels fixed + Avg Speed fixed. ```<br>

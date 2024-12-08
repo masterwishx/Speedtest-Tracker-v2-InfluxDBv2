@@ -783,7 +783,7 @@
         "y": 5
       },
       "id": 129,
-      "interval": "10m",
+      "interval": "10s",
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -794,7 +794,7 @@
           "calcs": [
             "last"
           ],
-          "fields": "/^Time$/",
+          "fields": "/^_time$/",
           "values": false
         },
         "showPercentChange": false,
@@ -827,7 +827,7 @@
           "measurement": "speedtest",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> drop(columns: [\"server_host\",\"server_name\",\"server_id\"])\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
+          "query": "from(bucket: \"${bucket}\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"speedtest\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"download_bits\")\r\n  |> group(columns: [\"_field\", \"_measurement\"], mode:\"by\")\r\n  |> last()\r\n  |> yield(name: \"last\")",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -850,21 +850,14 @@
       "title": "Latest result",
       "transformations": [
         {
-          "id": "merge",
-          "options": {}
-        },
-        {
-          "id": "organize",
+          "id": "calculateField",
           "options": {
-            "excludeByName": {
-              "download_bits": true,
-              "id": true
+            "mode": "reduceRow",
+            "reduce": {
+              "include": [],
+              "reducer": "lastNotNull"
             },
-            "includeByName": {},
-            "indexByName": {},
-            "renameByName": {
-              "download_bits": "Download Speed"
-            }
+            "replaceFields": true
           }
         }
       ],
@@ -1232,8 +1225,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1427,8 +1419,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1605,8 +1596,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1766,8 +1756,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "dark-blue",
-                "value": null
+                "color": "dark-blue"
               }
             ]
           },
@@ -1790,8 +1779,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -1849,8 +1837,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     },
                     {
                       "color": "yellow",
@@ -1909,8 +1896,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "red",
-                      "value": null
+                      "color": "red"
                     },
                     {
                       "color": "yellow",
@@ -1997,8 +1983,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -2052,8 +2037,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -2121,8 +2105,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -2167,8 +2150,7 @@
                   "mode": "percentage",
                   "steps": [
                     {
-                      "color": "green",
-                      "value": null
+                      "color": "green"
                     },
                     {
                       "color": "#EAB839",
@@ -2424,8 +2406,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2859,6 +2840,6 @@
   "timezone": "",
   "title": "Speedtest Tracker v2 - InfluxDBv2",
   "uid": "g7QsvEtVk",
-  "version": 81,
+  "version": 86,
   "weekStart": ""
 }
