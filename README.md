@@ -16,6 +16,7 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Updates
 
+``` 17.1.25 - Removed personalisations, reverted bucket variable to expected standard (speedtest-tracker-new,speedtest-tracker-cloud > speedtest-tracker), reverted IP:port to expected (9443>8443). Updated README.md for customisations. ```<br>
 ``` 8.12.24 - Fixed time in Latest result panel. ```<br>
 ``` 7.12.24 - Compatibility Update for Speedtest Tracker v0.25 some fields have been moved to tags + some fixes. ```<br>
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
@@ -24,11 +25,20 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Multi buckets
 
- You can change bucket name and add multiple buckets by : 
+ You can change bucket name and add multiple buckets by:
 
  <b>Go to Dashboard Setting - Variables - Click on bucket - Custom options:</b>
  
 ![Screenshot 2024-04-06 204806](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/808c1b36-71dc-4669-8014-6aac6ebfd85b)
+
+## Custom Link
+
+ You can update the link to your speedtest-tracker application by:
+
+ <b>Go to Dashboard Setting - Links - Click on 'Speedtest Tracker v2 App':</b>
+ 
+<img width="630" alt="Screenshot 2025-01-17 at 12 21 23" src="https://github.com/user-attachments/assets/99f49212-09a9-42eb-9697-d829ff0cd160" />
+
 
 ## Steps
 ```
