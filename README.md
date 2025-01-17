@@ -53,7 +53,7 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 4. Check in InfluxDBv2 in Data Explorer that test data exists in bucket
 
-5. Configure Grafana to use with data from InfluxDBv2 ( Select Datasource = InfluxDB , Query Language = Flux  ,Organization = yourorg , Bucket = speedtest-tracker , Token = yourtoken for bucket )
+5. Configure Grafana to use with data from InfluxDBv2 ( Select Datasource = InfluxDB , Query Language = Flux , Organization = yourorg , Bucket = speedtest-tracker , Token = yourtoken for bucket )
 
 6. Import this dashboard to Grafana (Dashboard > New > Import) using link in README.md
 
