@@ -78,9 +78,9 @@
       "tags": [],
       "targetBlank": true,
       "title": "Speedtest Tracker v2 App",
-      "tooltip": "Speedtest Tracker - DaRKNaS",
+      "tooltip": "Speedtest Tracker",
       "type": "link",
-      "url": "https://192.168.0.199:9443"
+      "url": "https://192.168.0.0:8443"
     },
     {
       "asDropdown": false,
@@ -2794,8 +2794,8 @@
     "list": [
       {
         "current": {
-          "text": "speedtest-tracker-new",
-          "value": "speedtest-tracker-new"
+          "text": "speedtest-tracker",
+          "value": "speedtest-tracker"
         },
         "description": "InfluxDBv2 bucket",
         "includeAll": false,
@@ -2804,16 +2804,11 @@
         "options": [
           {
             "selected": true,
-            "text": "speedtest-tracker-new",
-            "value": "speedtest-tracker-new"
-          },
-          {
-            "selected": false,
-            "text": "speedtest-tracker-cloud",
-            "value": "speedtest-tracker-cloud"
+            "text": "speedtest-tracker",
+            "value": "speedtest-tracker"
           }
         ],
-        "query": "speedtest-tracker-new,speedtest-tracker-cloud",
+        "query": "speedtest-tracker",
         "type": "custom"
       }
     ]

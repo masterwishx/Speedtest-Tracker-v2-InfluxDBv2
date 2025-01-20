@@ -16,6 +16,7 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Updates
 
+``` 17.1.25 - Removed personalisations, reverted bucket variable to expected standard (speedtest-tracker-new,speedtest-tracker-cloud > speedtest-tracker), reverted IP:port to expected (9443>8443). Updated README.md for customisations. ```<br>
 ``` 8.12.24 - Fixed time in Latest result panel. ```<br>
 ``` 7.12.24 - Compatibility Update for Speedtest Tracker v0.25 some fields have been moved to tags + some fixes. ```<br>
 ``` 14.8.24 - More Panels added + some fixes. ```<br>
@@ -24,31 +25,41 @@ Same steps here as before for exporting data but without needs for influxDBv1. C
 
 ## Multi buckets
 
- You can change bucket name and add multiple buckets by : 
+ You can change bucket name and add multiple buckets (comma separated list):
 
- <b>Go to Dashboard Setting - Variables - Click on bucket - Custom options:</b>
+ <b>Go to `Dashboard Setting > Variables > bucket > Custom options`:</b>
  
-![Screenshot 2024-04-06 204806](https://github.com/masterwishx/Speedtest-Tracker-v2-InfluxDBv2/assets/28630321/808c1b36-71dc-4669-8014-6aac6ebfd85b)
+<img width="582" alt="Screenshot 2025-01-17 at 16 04 11" src="https://github.com/user-attachments/assets/e4173c4e-3456-45f9-9282-7f28daacf0c2" />
+<img width="541" alt="Screenshot 2025-01-17 at 16 02 29" src="https://github.com/user-attachments/assets/55a0b9b2-2299-4fa8-962d-8db9533af0c2" />
+
+## Custom Link
+
+ You can update the link to your speedtest-tracker application:
+
+ <b>Go to `Dashboard Setting > Links > Speedtest Tracker v2 App`:</b>
+ 
+<img width="630" alt="Screenshot 2025-01-17 at 12 21 23" src="https://github.com/user-attachments/assets/99f49212-09a9-42eb-9697-d829ff0cd160" />
+
 
 ## Steps
 ```
-1. create bucket in InfluxDBv2
+1. Create bucket in InfluxDBv2: speedtest-tracker
 
-2.1 create or use exist API token (ALL ACCESS) for Grafana and auth.
+2.1 Create or use existing API token (ALL ACCESS) for Grafana and auth.
 
-2.2 create API token (read/write) for this bucket to use with speedtest-tracker or use exist.
+2.2 Create API token (read/write) for this bucket to use with speedtest-tracker or use existing.
 
-3. Config Client of InfluxDBv2(Speedtest-tracker) by entered data : bucket, etc ...
+3. Configure Speedtest Tracker application with relevant InfluxDBv2 configuration: URL, org, bucket, token, etc..., and 'Test connection'
 
-4. Check in InfluxDBv2 in Data Explorer that data is exist in bucket
+4. Check in InfluxDBv2 in Data Explorer that test data exists in bucket
 
-5. Then you can select all data needed and switch to Script Editor copy the script (already done)
+5. Configure Grafana to use with data from InfluxDBv2 ( Select Datasource = InfluxDB , Query Language = Flux , Organization = yourorg , Bucket = speedtest-tracker , Token = yourtoken for bucket )
 
-6. Configure Grafana to use with data from InfluxDBv2 ( select datasource = InfluxDB , Query Language = Flux  ,Organization = yourorg , Bucket = speedtest , Token = yourtoken for bucket )
+6. Import this dashboard to Grafana (Dashboard > New > Import) using link in README.md
 
-7. import this script in Grafana Dashboard .
+7. Return to Speedtest Tracker application and Export data to InfluxDB (Settings > Data Integration > Export current results)
 
-8. Enjoy
+7. Enjoy
 ```
 
 ![image](https://github.com/user-attachments/assets/25aeb76a-5acf-4135-8073-a61f6bcb8cc3)
